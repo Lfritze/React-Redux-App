@@ -4,6 +4,13 @@ import BasicCard from "./BasicCard";
 import { getPeopleData } from "../actions";
 import styled from "styled-components";
 
+const PeopleContainer = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  margin: 0 auto;
+`;
+
 const PeopleCard = props => {
   useEffect(() => {
     props.getPeopleData();
@@ -14,12 +21,12 @@ const PeopleCard = props => {
   }
   console.log(props);
   return (
-    <div>
+    <PeopleContainer>
       {props.error && <p>{props.error}</p>}
       {props.person.map(person => (
         <BasicCard key={person.id} person={person} />
       ))}
-    </div>
+    </PeopleContainer>
   );
 };
 
